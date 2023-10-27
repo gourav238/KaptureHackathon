@@ -1,6 +1,6 @@
 package com.kapture.fieldservice.object;
 
-import java.util.Calendar;
+
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -38,10 +38,10 @@ public class PurchaseOrder {
 	private String otherDetail;
 	
 	@Field
-	private Calendar createdDate;
+	private long createdDate;
 	
 	@Field
-	private Calendar lastUpdatedDate;
+	private long lastUpdatedDate;
 
 	public String getId() {
 		return id;
@@ -107,19 +107,19 @@ public class PurchaseOrder {
 		this.otherDetail = otherDetail;
 	}
 
-	public Calendar getCreatedDate() {
+	public long getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Calendar createdDate) {
+	public void setCreatedDate(long createdDate) {
 		this.createdDate = createdDate;
 	}
 
-	public Calendar getLastUpdatedDate() {
+	public long getLastUpdatedDate() {
 		return lastUpdatedDate;
 	}
 
-	public void setLastUpdatedDate(Calendar lastUpdatedDate) {
+	public void setLastUpdatedDate(long lastUpdatedDate) {
 		this.lastUpdatedDate = lastUpdatedDate;
 	}
 	

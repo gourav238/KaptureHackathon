@@ -1,6 +1,6 @@
 package com.kapture.fieldservice.object;
 
-import java.util.Calendar;
+
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -26,11 +26,11 @@ public class Config {
 	private String config;
 	
 	@Field
-	private Calendar createdDate;
+	private long createdDate;
 	
 	@Field
 	@Indexed
-	private Calendar lastUpdatedDate;
+	private long lastUpdatedDate;
 
 	public String getId() {
 		return id;
@@ -64,19 +64,19 @@ public class Config {
 		this.config = config;
 	}
 
-	public Calendar getCreatedDate() {
+	public long getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Calendar createdDate) {
+	public void setCreatedDate(long createdDate) {
 		this.createdDate = createdDate;
 	}
 
-	public Calendar getLastUpdatedDate() {
+	public long getLastUpdatedDate() {
 		return lastUpdatedDate;
 	}
 
-	public void setLastUpdatedDate(Calendar lastUpdatedDate) {
+	public void setLastUpdatedDate(long lastUpdatedDate) {
 		this.lastUpdatedDate = lastUpdatedDate;
 	}
 	

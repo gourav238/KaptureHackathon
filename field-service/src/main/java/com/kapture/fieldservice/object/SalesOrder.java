@@ -1,6 +1,6 @@
 package com.kapture.fieldservice.object;
 
-import java.util.Calendar;
+
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -16,7 +16,7 @@ public class SalesOrder {
 	@Field
 	private String technicianId;
 	@Field
-	private Calendar lastModificationDate;
+	private long lastModificationDate;
 	@Field
 	private String orderId;
 	@Field
@@ -54,11 +54,11 @@ public class SalesOrder {
 		this.technicianId = technicianId;
 	}
 
-	public Calendar getLastModificationDate() {
+	public long getLastModificationDate() {
 		return lastModificationDate;
 	}
 
-	public void setLastModificationDate(Calendar lastModificationDate) {
+	public void setLastModificationDate(long lastModificationDate) {
 		this.lastModificationDate = lastModificationDate;
 	}
 

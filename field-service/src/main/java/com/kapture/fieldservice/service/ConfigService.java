@@ -1,5 +1,7 @@
 package com.kapture.fieldservice.service;
 
+
+
 import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,8 +41,8 @@ public class ConfigService {
 				return new ResponseEntity<JSONObject>(jsonObject, HttpStatus.BAD_REQUEST);
 			}
 			config.setCmId(CM_ID);
-			config.setCreatedDate(Calendar.getInstance());
-			config.setLastUpdatedDate(Calendar.getInstance());
+			config.setCreatedDate(Calendar.getInstance().getTimeInMillis());
+			config.setLastUpdatedDate(Calendar.getInstance().getTimeInMillis());
 			configRepository.save(config);
 			status = true;
 			message = "data added successfully";
