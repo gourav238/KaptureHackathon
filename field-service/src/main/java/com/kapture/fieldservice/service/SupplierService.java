@@ -92,7 +92,7 @@ public class SupplierService {
 				jsonObject.put("message", "supplier is mandatory");
 				return new ResponseEntity<JSONObject>(jsonObject, HttpStatus.BAD_REQUEST);
 			}
-			Supplier supplierById = supplierRepository.findById(supplier.getId()).get();
+			Supplier supplierById = supplierRepository.getById(supplier.getId());
 			supplierById.setEnable(false);
 			supplierById.setLastUpdatedDate(Calendar.getInstance().getTimeInMillis());
 			supplierRepository.save(supplierById);
