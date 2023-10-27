@@ -29,7 +29,7 @@ public class SupplierController {
     }
 
     @PostMapping("/disable")
-    public ResponseEntity< ? > deleteSupplier(Supplier supplier) {
+    public ResponseEntity< ? > deleteSupplier(@RequestBody Supplier supplier) {
         return supplierService.disableSupplierById(supplier);
     }
 }
