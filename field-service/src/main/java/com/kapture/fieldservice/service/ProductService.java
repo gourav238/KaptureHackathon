@@ -18,17 +18,22 @@ public class ProductService {
 		HttpStatus httpStatus = HttpStatus.OK;
 		JSONObject jsonObject = new JSONObject();
 		try {
+			System.out.println(request.getContentType());
 			if (StringUtils.isEmpty(requestBody)) {
 				jsonObject.put("status", status);
 				jsonObject.put("message", "request body is mandatory");
 				return new ResponseEntity<JSONObject>(jsonObject, HttpStatus.BAD_REQUEST);
 			}
+			
+			status = true;
+			message = "data added successfully";
+			
 		} catch (Exception e) {
 			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 			message = "some error occurred";
 		}
 		jsonObject.put("status", status);
 		jsonObject.put("message", message);
-		return new ResponseEntity<JSONObject>(jsonObject, HttpStatus.OK);
+		return new ResponseEntity<JSONObject>(jsonObject, httpStatus);
 	}
 }
