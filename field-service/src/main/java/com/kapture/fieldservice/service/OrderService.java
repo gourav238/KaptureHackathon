@@ -29,7 +29,7 @@ public class OrderService {
         if (config != null) {
             
             String jConfig = config.getConfig();
-            JSONObject path = JSONObject.fromObject(jConfig);
+            JSONObject path = JSONObject.fromObject(jConfig).optJSONObject("path");
             Order order = new Order();
             
             Iterator<String> it = path.keys();
