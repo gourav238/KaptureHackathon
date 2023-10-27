@@ -36,7 +36,7 @@ public class OrderService {
             while (it.hasNext())
             {
                 String key = it.next();
-                System.out.println(key);
+                System.out.println(key +" "+path.get(key));
             }
 //            String path = ticketAssociateObjectFieldsMappingConfig.getJsonpath();
 //
