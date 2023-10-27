@@ -15,7 +15,7 @@ public class PurchaseOrder {
 
 	@Id
 	@Field
-	private int id;
+	private String id;
 	
 	@Field
 	@Indexed
@@ -45,11 +45,11 @@ public class PurchaseOrder {
 	@Field
 	private Calendar lastUpdatedDate;
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
