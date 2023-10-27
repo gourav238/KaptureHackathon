@@ -1,7 +1,5 @@
 package com.kapture.fieldservice.object;
 
-
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -26,6 +24,9 @@ public class Supplier {
 	
 	@Field
 	private String otherDetail;
+	
+	@Field
+	private boolean isEnable;
 	
 	@Field
 	private long createdDate;
@@ -89,6 +90,13 @@ public class Supplier {
 	public void setLastUpdatedDate(long lastUpdatedDate) {
 		this.lastUpdatedDate = lastUpdatedDate;
 	}
-	
+
+	public boolean isEnable() {
+		return isEnable;
+	}
+
+	public void setEnable(boolean isEnable) {
+		this.isEnable = isEnable;
+	}
 	
 }
