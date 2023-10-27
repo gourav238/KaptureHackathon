@@ -11,6 +11,6 @@ import com.kapture.fieldservice.object.Supplier;
 @Repository
 public interface SupplierRepository extends MongoRepository<Supplier, String>{
 
-	@Query("{ \"cmId\": ?0, \"enable\": true}")
+	@Query("{ \"cmId\": ?0, \"isEnable\": true}")
 	public List<Supplier> getByCmId(int cmId);
 }
