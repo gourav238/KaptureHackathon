@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,13 +63,41 @@ public class SupplierService {
 		JSONObject jsonObject = new JSONObject();
 		try {
 			List<Supplier> getByCmId = supplierRepository.getByCmId(CM_ID);
-			if (CollectionUtils.isEmpty(getByCmId)) {
+			if (CollectionUtils.isNotEmpty(getByCmId)) {
 				status = true;
 				message = "data found successfully";
 				jsonObject.put("details", getByCmId);
 			} else {
 				message = "data not found";
 			}
+		} catch (Exception e) {
+			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+			message = "some error occurred";
+			logger.error("error in saveSupplier() ", e);
+		}
+		jsonObject.put("status", status);
+		jsonObject.put("message", message);
+		return new ResponseEntity<JSONObject>(jsonObject, httpStatus);
+	}
+	
+	public ResponseEntity<?> disableSupplierById(Supplier supplier) {
+		String message = "";
+		boolean status = false;
+		HttpStatus httpStatus = HttpStatus.OK;
+		JSONObject jsonObject = new JSONObject();
+		try {
+			logger.info("supplier in disableSupplierById() : " + supplier);
+			if (supplier == null || StringUtils.isEmpty(supplier.getId())) {
+				jsonObject.put("status", status);
+				jsonObject.put("message", "supplier is mandatory");
+				return new ResponseEntity<JSONObject>(jsonObject, HttpStatus.BAD_REQUEST);
+			}
+			Supplier supplierById = supplierRepository.findById(supplier.getId()).get();
+			supplierById.setEnable(false);
+			supplierById.setLastUpdatedDate(Calendar.getInstance().getTimeInMillis());
+			supplierRepository.save(supplierById);
+			status = true;
+			message = "data edited successfully";
 		} catch (Exception e) {
 			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 			message = "some error occurred";
