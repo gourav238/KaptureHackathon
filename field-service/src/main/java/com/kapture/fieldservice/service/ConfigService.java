@@ -1,5 +1,7 @@
 package com.kapture.fieldservice.service;
 
+import java.util.Calendar;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -21,6 +23,8 @@ public class ConfigService {
 	private ConfigRepository configRepository;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ConfigService.class);
+	
+	private static final int CM_ID = 69;
 
 	public ResponseEntity<?> saveConfig(Config config, HttpServletRequest request) {
 		String message = "";
@@ -33,13 +37,16 @@ public class ConfigService {
 				jsonObject.put("message", "request body is mandatory");
 				return new ResponseEntity<JSONObject>(jsonObject, HttpStatus.BAD_REQUEST);
 			}
+			config.setCmId(CM_ID);
+			config.setCreatedDate(Calendar.getInstance());
+			config.setLastUpdatedDate(Calendar.getInstance());
 			configRepository.save(config);
 			status = true;
 			message = "data added successfully";
 		} catch (Exception e) {
 			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 			message = "some error occurred";
-			e.printStackTrace();
+			logger.error("error in saveConfig() ", e);
 		}
 		jsonObject.put("status", status);
 		jsonObject.put("message", message);
@@ -64,7 +71,7 @@ public class ConfigService {
 		} catch (Exception e) {
 			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 			message = "some error occurred";
-			e.printStackTrace();
+			logger.error("error in getById() ", e);
 		}
 		jsonObject.put("status", status);
 		jsonObject.put("message", message);
