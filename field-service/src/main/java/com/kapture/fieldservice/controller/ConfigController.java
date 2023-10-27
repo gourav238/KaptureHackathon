@@ -30,8 +30,8 @@ public class ConfigController {
     }
     
     @GetMapping("/get")
-    public ResponseEntity<?> getConfig(@RequestParam("id") int id){
-        return configService.getById(id, request);
+    public ResponseEntity<?> getConfig(@RequestParam("name") String name){
+        return configService.getByConfigName(name, request);
     }
     
     @PostMapping("/delete")

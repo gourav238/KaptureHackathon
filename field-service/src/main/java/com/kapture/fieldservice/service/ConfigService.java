@@ -60,6 +60,7 @@ public class ConfigService {
 		HttpStatus httpStatus = HttpStatus.OK;
 		JSONObject jsonObject = new JSONObject();
 		try {
+			logger.error("getContentType ", request.getContentType());
 			if (StringUtils.isEmpty(configName)) {
 				jsonObject.put("status", status);
 				jsonObject.put("message", "id is mandatory");
