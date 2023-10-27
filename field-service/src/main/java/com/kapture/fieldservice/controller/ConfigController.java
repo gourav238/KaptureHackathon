@@ -1,26 +1,28 @@
 package com.kapture.fieldservice.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kapture.fieldservice.object.Config;
 
-@RestController("config")
+@RestController
+@RequestMapping("config")
 public class ConfigController {
     
-    @RequestMapping("/add")
+    @PostMapping("/add")
     public ResponseEntity<?> addConfig(@RequestBody Config config){
         return null;
     }
     
-    @RequestMapping("/update")
+    @PostMapping("/update")
     public ResponseEntity<?> updateConfig(@RequestBody Config config){
         return null;
     }
     
-    @RequestMapping("/delete")
+    @PostMapping("/delete")
     public ResponseEntity<?> deleteConfig(@RequestBody Config config){
         return null;
     }
