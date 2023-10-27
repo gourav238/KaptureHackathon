@@ -2,6 +2,7 @@ package com.kapture.fieldservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +24,8 @@ public class SupplierController {
         return supplierService.saveSupplier(supplier);
     }
 
-    @PostMapping("/get")
-    public ResponseEntity< ? > getSupplierListById(@RequestBody Supplier supplier) {
+    @GetMapping("/get")
+    public ResponseEntity< ? > getSupplierListById() {
         return supplierService.getSupplierList();
     }
 
