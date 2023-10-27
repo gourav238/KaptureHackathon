@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.kapture.fieldservice.object.ProductCategory;
 
 @Repository
-public interface ProductCategoryRepository extends MongoRepository<ProductCategory, Integer>{
+public interface ProductCategoryRepository extends MongoRepository<ProductCategory, String>{
 
 }

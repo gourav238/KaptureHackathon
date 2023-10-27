@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.kapture.fieldservice.object.Inventory;
 
 @Repository
-public interface InventoryRepository extends MongoRepository<Inventory, Integer>{
+public interface InventoryRepository extends MongoRepository<Inventory, String>{
 
 }

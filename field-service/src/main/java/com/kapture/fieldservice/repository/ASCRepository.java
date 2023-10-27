@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.kapture.fieldservice.object.ASC;
 
 @Repository
-public interface ASCRepository extends MongoRepository<ASC, Integer> {
+public interface ASCRepository extends MongoRepository<ASC, String> {
 
 }

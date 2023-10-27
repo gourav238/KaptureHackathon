@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.kapture.fieldservice.object.Product;
 
 @Repository
-public interface ProductRepository extends MongoRepository<Product, Integer>{
+public interface ProductRepository extends MongoRepository<Product, String>{
 
 	@Query("{ 'cmId': ?0}")
 	public List<Product> getByCmId(int cmId);

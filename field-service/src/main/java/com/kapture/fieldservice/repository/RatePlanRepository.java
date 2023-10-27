@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.kapture.fieldservice.object.RatePlan;
 
 @Repository
-public interface RatePlanRepository extends MongoRepository<RatePlan, Integer>{
+public interface RatePlanRepository extends MongoRepository<RatePlan, String>{
 
 }

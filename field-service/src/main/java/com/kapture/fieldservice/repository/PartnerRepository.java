@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.kapture.fieldservice.object.Partner;
 
 @Repository
-public interface PartnerRepository extends MongoRepository<Partner, Integer>{
+public interface PartnerRepository extends MongoRepository<Partner, String>{
 
 }

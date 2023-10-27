@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.kapture.fieldservice.object.Config;
 
 @Repository
-public interface ConfigRepository extends MongoRepository<Config, Integer>{
+public interface ConfigRepository extends MongoRepository<Config, String>{
 
 	@Query("{ \"cmId\": ?0, \"configName\": ?1}")
     public Config findByCmIdAndConfigName(int cmId, String configName);
