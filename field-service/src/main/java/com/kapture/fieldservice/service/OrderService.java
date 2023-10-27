@@ -25,6 +25,7 @@ public class OrderService {
 
     public ResponseEntity< ? > add(String requestPayload, HttpServletRequest request) {
         Config config = configRepository.findByCmIdAndConfigName(CMID, CONFIG_TYPE);
+        System.out.println("config "+config);
         if (config != null) {
             
             String jConfig = config.getConfig();
