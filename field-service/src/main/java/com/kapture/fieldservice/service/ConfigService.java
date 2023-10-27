@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,18 +54,18 @@ public class ConfigService {
 		return new ResponseEntity<JSONObject>(jsonObject, httpStatus);
 	}
 	
-	public ResponseEntity<?> getById(int id, HttpServletRequest request) {
+	public ResponseEntity<?> getByConfigName(String configName, HttpServletRequest request) {
 		String message = "";
 		boolean status = false;
 		HttpStatus httpStatus = HttpStatus.OK;
 		JSONObject jsonObject = new JSONObject();
 		try {
-			if (id <= 0) {
+			if (StringUtils.isEmpty(configName)) {
 				jsonObject.put("status", status);
 				jsonObject.put("message", "id is mandatory");
 				return new ResponseEntity<JSONObject>(jsonObject, HttpStatus.BAD_REQUEST);
 			}
-			Config c = configRepository.findById(id).get();
+			Config c = configRepository.findByCmIdAndConfigName(CM_ID, configName);
 			status = true;
 			message = "data added successfully";
 			jsonObject.put("detail", c);
