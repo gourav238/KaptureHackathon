@@ -7,8 +7,6 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 @Document(collection = "order")
 public class Order {
 
@@ -21,14 +19,14 @@ public class Order {
 	private int cmId;
 	
 	@Field
-	private JsonNode orderItems;
+	private String orderItems;
 	
 	@Field
 	@Indexed
 	private int customerId;
 	
 	@Field
-	private JsonNode address;
+	private String address;
 	
 	@Field
 	@Indexed
@@ -49,7 +47,7 @@ public class Order {
 	private String orderStatus;
 	
 	@Field
-	private JsonNode orderDetails;
+	private String orderDetails;
 
 	public String getId() {
 		return id;
@@ -67,11 +65,11 @@ public class Order {
 		this.cmId = cmId;
 	}
 
-	public JsonNode getOrderItems() {
+	public String getOrderItems() {
 		return orderItems;
 	}
 
-	public void setOrderItems(JsonNode orderItems) {
+	public void setOrderItems(String orderItems) {
 		this.orderItems = orderItems;
 	}
 
@@ -83,11 +81,11 @@ public class Order {
 		this.customerId = customerId;
 	}
 
-	public JsonNode getAddress() {
+	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(JsonNode address) {
+	public void setAddress(String address) {
 		this.address = address;
 	}
 
@@ -131,11 +129,11 @@ public class Order {
 		this.orderStatus = orderStatus;
 	}
 
-	public JsonNode getOrderDetails() {
+	public String getOrderDetails() {
 		return orderDetails;
 	}
 
-	public void setOrderDetails(JsonNode orderDetails) {
+	public void setOrderDetails(String orderDetails) {
 		this.orderDetails = orderDetails;
 	}
 	

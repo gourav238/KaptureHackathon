@@ -6,8 +6,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 public class Technician {
 
 	@Id
@@ -19,7 +17,7 @@ public class Technician {
 	private int cmId;
 	
 	@Field
-	private JsonNode address;
+	private String address;
 	
 	@Field
 	private String name;
@@ -29,7 +27,7 @@ public class Technician {
 	private int externalId;
 	
 	@Field
-	private JsonNode orderDetail;
+	private String orderDetail;
 	
 	@Field
 	private Calendar createdDate;
@@ -53,11 +51,11 @@ public class Technician {
 		this.cmId = cmId;
 	}
 
-	public JsonNode getAddress() {
+	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(JsonNode address) {
+	public void setAddress(String address) {
 		this.address = address;
 	}
 
@@ -77,11 +75,11 @@ public class Technician {
 		this.externalId = externalId;
 	}
 
-	public JsonNode getOrderDetail() {
+	public String getOrderDetail() {
 		return orderDetail;
 	}
 
-	public void setOrderDetail(JsonNode orderDetail) {
+	public void setOrderDetail(String orderDetail) {
 		this.orderDetail = orderDetail;
 	}
 

@@ -1,22 +1,15 @@
 package com.kapture.fieldservice.service;
 
-import java.util.Iterator;
-
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.beanutils.PropertyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.PathNotFoundException;
 import com.kapture.fieldservice.object.Config;
-import com.kapture.fieldservice.object.Order;
 import com.kapture.fieldservice.repository.ConfigRepository;
-
-import net.sf.json.JSONArray;
 
 @Service
 public class OrderService {
@@ -29,16 +22,16 @@ public class OrderService {
         Config config = configRepository.findByCmIdAndConfigName(CMID, CONFIG_TYPE);
         if (config != null) {
             
-            JsonNode jConfig = config.getConfig();
-            JsonNode path = jConfig.get("path");
-            Order order = new Order();
-            
-            Iterator<String> it = path.fieldNames();
-            while (it.hasNext())
-            {
-                String key = it.next();
-                System.out.println(key);
-            }
+            String jConfig = config.getConfig();
+//            JsonNode path = jConfig.get("path");
+//            Order order = new Order();
+//            
+//            Iterator<String> it = path.fieldNames();
+//            while (it.hasNext())
+//            {
+//                String key = it.next();
+//                System.out.println(key);
+//            }
 //            String path = ticketAssociateObjectFieldsMappingConfig.getJsonpath();
 //
 //            String str[] = path.split("]");

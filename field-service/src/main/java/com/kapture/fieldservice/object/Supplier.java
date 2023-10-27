@@ -7,8 +7,6 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 @Document
 public class Supplier {
 
@@ -24,10 +22,10 @@ public class Supplier {
 	private String name;
 	
 	@Field
-	private JsonNode address;
+	private String address;
 	
 	@Field
-	private JsonNode otherDetail;
+	private String otherDetail;
 	
 	@Field
 	private Calendar createdDate;
@@ -60,19 +58,19 @@ public class Supplier {
 		this.name = name;
 	}
 
-	public JsonNode getAddress() {
+	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(JsonNode address) {
+	public void setAddress(String address) {
 		this.address = address;
 	}
 
-	public JsonNode getOtherDetail() {
+	public String getOtherDetail() {
 		return otherDetail;
 	}
 
-	public void setOtherDetail(JsonNode otherDetail) {
+	public void setOtherDetail(String otherDetail) {
 		this.otherDetail = otherDetail;
 	}
 

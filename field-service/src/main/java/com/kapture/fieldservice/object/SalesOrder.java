@@ -6,8 +6,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 @Document
 public class SalesOrder {
 	@Id
@@ -22,7 +20,7 @@ public class SalesOrder {
 	@Field
 	private String orderId;
 	@Field
-	private JsonNode otherDetails;
+	private String otherDetails;
 	@Field
 	private String productId;
 	@Field
@@ -72,11 +70,11 @@ public class SalesOrder {
 		this.orderId = orderId;
 	}
 
-	public JsonNode getOtherDetails() {
+	public String getOtherDetails() {
 		return otherDetails;
 	}
 
-	public void setOtherDetails(JsonNode otherDetails) {
+	public void setOtherDetails(String otherDetails) {
 		this.otherDetails = otherDetails;
 	}
 

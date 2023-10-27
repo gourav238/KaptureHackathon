@@ -7,8 +7,6 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 @Document(collection = "product")
 public class Product {
 
@@ -36,7 +34,7 @@ public class Product {
 	private String description;
 	
 	@Field
-	private JsonNode config;		//jsonobject other details
+	private String config;		//jsonobject other details
 	
 	@Field
 	@Indexed
@@ -46,7 +44,7 @@ public class Product {
 	private double price;
 	
 	@Field
-	private JsonNode tax;			//jsonobject based on country
+	private String tax;			//jsonobject based on country
 	
 	@Field
 	private int warranty;		//number of days
@@ -106,11 +104,11 @@ public class Product {
 		this.description = description;
 	}
 
-	public JsonNode getConfig() {
+	public String getConfig() {
 		return config;
 	}
 
-	public void setConfig(JsonNode config) {
+	public void setConfig(String config) {
 		this.config = config;
 	}
 
@@ -130,11 +128,11 @@ public class Product {
 		this.price = price;
 	}
 
-	public JsonNode getTax() {
+	public String getTax() {
 		return tax;
 	}
 
-	public void setTax(JsonNode tax) {
+	public void setTax(String tax) {
 		this.tax = tax;
 	}
 

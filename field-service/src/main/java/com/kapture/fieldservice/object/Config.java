@@ -7,8 +7,6 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 @Document
 public class Config {
 
@@ -25,7 +23,7 @@ public class Config {
 	private String configName;
 	
 	@Field
-	private JsonNode config;
+	private String config;
 	
 	@Field
 	private Calendar createdDate;
@@ -58,11 +56,11 @@ public class Config {
 		this.configName = configName;
 	}
 
-	public JsonNode getConfig() {
+	public String getConfig() {
 		return config;
 	}
 
-	public void setConfig(JsonNode config) {
+	public void setConfig(String config) {
 		this.config = config;
 	}
 
