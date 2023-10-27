@@ -8,9 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import lombok.Data;
-
-@Data
 public class Technician {
 
 	@Id
@@ -39,5 +36,71 @@ public class Technician {
 	
 	@Field
 	private Calendar lastUpdatedDate;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getCmId() {
+		return cmId;
+	}
+
+	public void setCmId(int cmId) {
+		this.cmId = cmId;
+	}
+
+	public JsonNode getAddress() {
+		return address;
+	}
+
+	public void setAddress(JsonNode address) {
+		this.address = address;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getExternalId() {
+		return externalId;
+	}
+
+	public void setExternalId(int externalId) {
+		this.externalId = externalId;
+	}
+
+	public JsonNode getOrderDetail() {
+		return orderDetail;
+	}
+
+	public void setOrderDetail(JsonNode orderDetail) {
+		this.orderDetail = orderDetail;
+	}
+
+	public Calendar getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Calendar createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Calendar getLastUpdatedDate() {
+		return lastUpdatedDate;
+	}
+
+	public void setLastUpdatedDate(Calendar lastUpdatedDate) {
+		this.lastUpdatedDate = lastUpdatedDate;
+	}
+	
+	
 
 }

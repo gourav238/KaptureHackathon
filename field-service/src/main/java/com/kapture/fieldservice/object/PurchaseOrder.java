@@ -10,9 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import lombok.Data;
-
-@Data
 @Document
 public class PurchaseOrder {
 
@@ -47,4 +44,86 @@ public class PurchaseOrder {
 	
 	@Field
 	private Calendar lastUpdatedDate;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getCmId() {
+		return cmId;
+	}
+
+	public void setCmId(int cmId) {
+		this.cmId = cmId;
+	}
+
+	public String getInvoiceNumber() {
+		return invoiceNumber;
+	}
+
+	public void setInvoiceNumber(String invoiceNumber) {
+		this.invoiceNumber = invoiceNumber;
+	}
+
+	public List<Integer> getProductIdsList() {
+		return productIdsList;
+	}
+
+	public void setProductIdsList(List<Integer> productIdsList) {
+		this.productIdsList = productIdsList;
+	}
+
+	public List<Integer> getOrderIdsList() {
+		return orderIdsList;
+	}
+
+	public void setOrderIdsList(List<Integer> orderIdsList) {
+		this.orderIdsList = orderIdsList;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getErrorReason() {
+		return errorReason;
+	}
+
+	public void setErrorReason(String errorReason) {
+		this.errorReason = errorReason;
+	}
+
+	public JsonNode getOtherDetail() {
+		return otherDetail;
+	}
+
+	public void setOtherDetail(JsonNode otherDetail) {
+		this.otherDetail = otherDetail;
+	}
+
+	public Calendar getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Calendar createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Calendar getLastUpdatedDate() {
+		return lastUpdatedDate;
+	}
+
+	public void setLastUpdatedDate(Calendar lastUpdatedDate) {
+		this.lastUpdatedDate = lastUpdatedDate;
+	}
+	
+	
 }

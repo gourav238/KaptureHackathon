@@ -9,9 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import lombok.Data;
-
-@Data
 @Document
 public class Config {
 
@@ -36,4 +33,54 @@ public class Config {
 	@Field
 	@Indexed
 	private Calendar lastUpdatedDate;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getCmId() {
+		return cmId;
+	}
+
+	public void setCmId(int cmId) {
+		this.cmId = cmId;
+	}
+
+	public String getConfigName() {
+		return configName;
+	}
+
+	public void setConfigName(String configName) {
+		this.configName = configName;
+	}
+
+	public JsonNode getConfig() {
+		return config;
+	}
+
+	public void setConfig(JsonNode config) {
+		this.config = config;
+	}
+
+	public Calendar getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Calendar createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Calendar getLastUpdatedDate() {
+		return lastUpdatedDate;
+	}
+
+	public void setLastUpdatedDate(Calendar lastUpdatedDate) {
+		this.lastUpdatedDate = lastUpdatedDate;
+	}
+	
+	
 }
