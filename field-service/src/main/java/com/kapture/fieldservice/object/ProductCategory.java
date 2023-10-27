@@ -9,9 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import lombok.Data;
-
-@Data
 @Document
 public class ProductCategory {
 
@@ -27,6 +24,7 @@ public class ProductCategory {
 	private String name;
 	
 	@Field
+	@Indexed
 	private String parentProductCategory;
 	
 	@Field
@@ -41,5 +39,71 @@ public class ProductCategory {
 	@Field
 	@Indexed
 	private Calendar lastUpdatedDate;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getCmId() {
+		return cmId;
+	}
+
+	public void setCmId(int cmId) {
+		this.cmId = cmId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getParentProductCategory() {
+		return parentProductCategory;
+	}
+
+	public void setParentProductCategory(String parentProductCategory) {
+		this.parentProductCategory = parentProductCategory;
+	}
+
+	public String getDiscription() {
+		return discription;
+	}
+
+	public void setDiscription(String discription) {
+		this.discription = discription;
+	}
+
+	public JsonNode getOtherDetail() {
+		return otherDetail;
+	}
+
+	public void setOtherDetail(JsonNode otherDetail) {
+		this.otherDetail = otherDetail;
+	}
+
+	public Calendar getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Calendar createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Calendar getLastUpdatedDate() {
+		return lastUpdatedDate;
+	}
+
+	public void setLastUpdatedDate(Calendar lastUpdatedDate) {
+		this.lastUpdatedDate = lastUpdatedDate;
+	}
+	
+	
 
 }
