@@ -73,11 +73,12 @@ public class OrderService {
 
                     value = (value + "").replaceAll(",$", "");
                     // if (!isNotOvrride || isPathValid(path, requestPayload)) {
+                    System.out.println("key " + key + " value " + value);
                     PropertyUtils.setProperty(order, key, value);
 
                     // }
                 }
-                orderRepository.save(order);
+                System.out.println(orderRepository.save(order));
             } catch (Exception e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
