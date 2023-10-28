@@ -1,10 +1,12 @@
 package com.kapture.fieldservice.service;
 
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -14,11 +16,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.jayway.jsonpath.DocumentContext;
+import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.PathNotFoundException;
 import com.kapture.fieldservice.object.Config;
+import com.kapture.fieldservice.object.Order;
 import com.kapture.fieldservice.object.Product;
 import com.kapture.fieldservice.repository.ConfigRepository;
 import com.kapture.fieldservice.repository.ProductRepository;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 @Service
@@ -55,16 +62,52 @@ public class ProductService {
 				jsonObject.put("message", "config not found");
 				return new ResponseEntity<JSONObject>(jsonObject, HttpStatus.NOT_FOUND);
 			}
+            try {
+                String jConfig = config.getConfig();
+                JSONObject pathObject = JSONObject.fromObject(jConfig).optJSONObject("path");
+                Product product = new Product();
+                product.setCmId(CM_ID);
+                @SuppressWarnings("unchecked")
+                Iterator<String> it = pathObject.keys();
+                while (it.hasNext()) {
+                    String key = it.next();
+                    System.out.println(key + " " + pathObject.get(key));
+                    String path = pathObject.optString(key);
 
-			String jConfig = config.getConfig();
-			JSONObject path = JSONObject.fromObject(jConfig);
-			Product product = new Product();
+                    String str[] = path.split("]");
+                    Object value = "";
+                    String arrayPathFinal = "";
+                    if (str[0].indexOf('[') > -1) {
+                        String arrayPath = str[0].substring(0, str[0].length() - 2);
+                        if (isPathValid(arrayPath, requestBody)) {
+                            Object obj = JsonPath.read(requestBody, "$." + arrayPath);
+                            JSONArray jsonArray = JSONArray.fromObject(obj);
+                            for (int i = 0; i < jsonArray.size(); i++) {
+                                if (isPathValid(arrayPath + "[" + i + "]" + str[1], requestBody)) {
+                                    value += JsonPath.read(requestBody, "$." + arrayPath + "[" + i + "]" + str[1]).toString() + ",";
+                                    arrayPathFinal = arrayPath + "[" + i + "]" + str[1];
 
-			Iterator<String> it = path.keys();
-			while (it.hasNext()) {
-				String key = it.next();
-				logger.info("key in saveProduct() " + key);
-			}
+                                }
+                            }
+                        }
+                    }
+                    boolean isValid = str[0].indexOf('[') == -1 && isPathValid(path, requestBody);
+                    if (isValid) {
+                        value = JsonPath.read(requestBody, "$." + path);
+                    } else {
+                        path = arrayPathFinal;
+                    }
+                    value = (value + "").replaceAll(",$", "");
+                    System.out.println("key " + key + " value " + value);
+                    if (!key.contains("orderItems."))
+                        PropertyUtils.setProperty(product, key, value);
+                }
+                product.setCreatedDate(Calendar.getInstance().getTimeInMillis());
+                product.setLastUpdatedDate(Calendar.getInstance().getTimeInMillis());
+                return new ResponseEntity<Object>(productRepository.save(product), HttpStatus.OK);
+            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
 
 			status = true;
 			message = "data added successfully";
@@ -102,4 +145,15 @@ public class ProductService {
 		jsonObject.put("message", message);
 		return new ResponseEntity<JSONObject>(jsonObject, httpStatus);
 	}
+	
+	 public boolean isPathValid(String path, String jsonString) {
+	        try {
+	            JsonPath.read(jsonString, path);
+	        } catch (PathNotFoundException e) {
+	            return false;
+	        } catch (Exception e) {
+	            return false;
+	        }
+	        return true;
+	    }
 }
