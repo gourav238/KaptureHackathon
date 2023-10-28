@@ -1,6 +1,7 @@
 package com.kapture.fieldservice.service;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -93,7 +94,9 @@ public class OrderService {
                 }
 //                order.setOrderDetails(requestPayload);
                 order.setOrderItems(orderItems);
-                System.out.println(orderRepository.save(order));
+                order.setCreatedDate(Calendar.getInstance().getTimeInMillis());
+                order.setLastUpdatedDate(Calendar.getInstance().getTimeInMillis());
+                return new ResponseEntity<Object>(orderRepository.save(order),HttpStatus.OK);
             } catch (Exception e) {
                 e.printStackTrace();
             }
