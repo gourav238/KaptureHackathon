@@ -2,16 +2,16 @@ package com.kapture.fieldservice.object;
 
 
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Document(collection = "product")
 public class Product {
 
-	@Id
-	@Field
+	@MongoId(FieldType.OBJECT_ID)
 	private String id;
 	
 	@Field
