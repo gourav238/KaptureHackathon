@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class SalesOrder {
     @Id
     @Field
-    private String Id;
+    private String id;
     @Field
     private int cmId;
     @Field
@@ -29,11 +29,11 @@ public class SalesOrder {
     private String productDetails;
 
     public String getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(String Id) {
-        this.Id = Id;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public int getCmId() {
