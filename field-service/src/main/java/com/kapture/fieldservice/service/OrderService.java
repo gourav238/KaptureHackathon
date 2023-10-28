@@ -80,7 +80,8 @@ public class OrderService {
                     }
                     value = (value + "").replaceAll(",$", "");
                     System.out.println("key " + key + " value " + value);
-                    PropertyUtils.setProperty(order, key, value);
+                    if (!key.contains("orderItems."))
+                        PropertyUtils.setProperty(order, key, value);
                 }
 //                order.setOrderDetails(requestPayload);
                 order.setOrderItems(orderItems);
