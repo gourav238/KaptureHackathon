@@ -32,7 +32,7 @@ public class OrderService {
     @Autowired
     OrderRepository             orderRepository;
     
-    public ResponseEntity< ? > findAll(String requestPayload, HttpServletRequest request) {
+    public ResponseEntity< ? > findAll(HttpServletRequest request) {
         List<Order> orders = orderRepository.getByCmId(CMID);
         return new ResponseEntity<Object>(orders,HttpStatus.OK);
         
