@@ -12,7 +12,7 @@ public class RatePlan {
 
 	@Id
 	@Field
-	private String id;
+	private String Id;
 	
 	@Field
 	@Indexed
@@ -32,11 +32,11 @@ public class RatePlan {
 	private long lastUpdatedDate;
 
 	public String getId() {
-		return id;
+		return Id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String Id) {
+		this.Id = Id;
 	}
 
 	public int getCmId() {

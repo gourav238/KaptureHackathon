@@ -12,7 +12,7 @@ public class Order {
 
 	@Id
 	@Field
-	private String id;
+	private String Id;
 	
 	@Field
 	@Indexed
@@ -50,11 +50,11 @@ public class Order {
 	private String orderDetails;
 
 	public String getId() {
-		return id;
+		return Id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String Id) {
+		this.Id = Id;
 	}
 
 	public int getCmId() {

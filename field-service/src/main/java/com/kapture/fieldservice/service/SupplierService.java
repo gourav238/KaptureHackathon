@@ -2,6 +2,7 @@ package com.kapture.fieldservice.service;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
@@ -92,7 +93,7 @@ public class SupplierService {
 				jsonObject.put("message", "supplier is mandatory");
 				return new ResponseEntity<JSONObject>(jsonObject, HttpStatus.BAD_REQUEST);
 			}
-			Supplier supplierById = supplierRepository.getById(supplier.getId());
+			Supplier supplierById = supplierRepository.findById(supplier.getId()).get();
 			supplierById.setEnable(false);
 			supplierById.setLastUpdatedDate(Calendar.getInstance().getTimeInMillis());
 			supplierRepository.save(supplierById);

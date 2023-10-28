@@ -10,7 +10,7 @@ public class Partner {
 
 	@Id
 	@Field
-	private String id;
+	private String Id;
 	
 	@Field
 	@Indexed
@@ -24,11 +24,11 @@ public class Partner {
 	private String name;
 
 	public String getId() {
-		return id;
+		return Id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String Id) {
+		this.Id = Id;
 	}
 
 	public int getCmId() {

@@ -12,7 +12,7 @@ public class Config {
 
 	@Id
 	@Field
-	private String id;
+	private String Id;
 	
 	@Field
 	@Indexed
@@ -33,11 +33,11 @@ public class Config {
 	private long lastUpdatedDate;
 
 	public String getId() {
-		return id;
+		return Id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String Id) {
+		this.Id = Id;
 	}
 
 	public int getCmId() {
