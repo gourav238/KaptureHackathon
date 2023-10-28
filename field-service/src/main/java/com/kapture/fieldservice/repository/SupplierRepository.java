@@ -13,7 +13,4 @@ public interface SupplierRepository extends MongoRepository<Supplier, String>{
 
 	@Query("{ \"cmId\": ?0, \"isEnable\": true}")
 	public List<Supplier> getByCmId(int cmId);
-	
-	@Query("{ \"_id\": ObjectId(\"?0\") }")
-	public Supplier getById(String Id);
 }
