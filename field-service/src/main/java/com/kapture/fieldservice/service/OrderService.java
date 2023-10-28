@@ -1,12 +1,15 @@
 package com.kapture.fieldservice.service;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Calendar;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.beanutils.PropertyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +32,12 @@ public class OrderService {
     ConfigRepository            configRepository;
     @Autowired
     OrderRepository             orderRepository;
+    
+    public ResponseEntity< ? > findAll(HttpServletRequest request) {
+        List<Order> orders = orderRepository.getByCmId(CMID);
+        return new ResponseEntity<Object>(orders,HttpStatus.OK);
+        
+    }
 
     public ResponseEntity< ? > add(String requestPayload, HttpServletRequest request) {
         Config config = configRepository.findByCmIdAndConfigName(CMID, CONFIG_TYPE);
@@ -85,7 +94,9 @@ public class OrderService {
                 }
 //                order.setOrderDetails(requestPayload);
                 order.setOrderItems(orderItems);
-                System.out.println(orderRepository.save(order));
+                order.setCreatedDate(Calendar.getInstance().getTimeInMillis());
+                order.setLastUpdatedDate(Calendar.getInstance().getTimeInMillis());
+                return new ResponseEntity<Object>(orderRepository.save(order),HttpStatus.OK);
             } catch (Exception e) {
                 e.printStackTrace();
             }
