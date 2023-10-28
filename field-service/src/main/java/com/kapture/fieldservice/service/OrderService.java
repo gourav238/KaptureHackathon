@@ -82,7 +82,7 @@ public class OrderService {
                     System.out.println("key " + key + " value " + value);
                     PropertyUtils.setProperty(order, key, value);
                 }
-                order.setOrderDetails(requestPayload);
+//                order.setOrderDetails(requestPayload);
                 order.setOrderItems(orderItems);
                 System.out.println(orderRepository.save(order));
             } catch (Exception e) {
